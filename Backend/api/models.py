@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class SensorData(models.Model):
-    
+    id = models.AutoField(primary_key=True)
     time = models.DateTimeField(auto_now_add=True)
     temperature = models.FloatField(blank=True)
     humidity = models.FloatField(blank=True)
@@ -15,49 +15,57 @@ class SensorData(models.Model):
     
 
 class FanState(models.Model):
-    time = models.DateTimeField(primary_key=True)
+    id = models.AutoField(primary_key=True)
+    time = models.DateTimeField(auto_now_add=True)
     state = models.BooleanField(default=False)
     def __str__(self):
-        return self.time
+        return f"{self.time} {self.state}"
 
 class WaterState(models.Model):
-    time = models.DateTimeField(primary_key=True)
+    id = models.AutoField(primary_key=True)
+    time = models.DateTimeField(auto_now_add=True)
     state = models.BooleanField(default=False)
     def __str__(self):
-        return self.time
+        return f"{self.time} {self.state}"
 
 class LightState(models.Model):
-    time = models.DateTimeField(primary_key=True)
+    id = models.AutoField(primary_key=True)
+    time = models.DateTimeField(auto_now_add=True)
     state = models.BooleanField(default=False)
     def __str__(self):
-        return self.time
+        return f"{self.time} {self.state}"
 
 class ShadeState(models.Model):
-    time = models.DateTimeField(primary_key=True)
+    id = models.AutoField(primary_key=True)
+    time = models.DateTimeField(auto_now_add=True)
     state = models.BooleanField(default=False)
     def __str__(self):
-        return self.time
+        return f"{self.time} {self.state}"
 
 class FertilizersState(models.Model):
-    time = models.DateTimeField(primary_key=True)
+    id = models.AutoField(primary_key=True)
+    time = models.DateTimeField(auto_now_add=True)
     state = models.BooleanField(default=False)
     def __str__(self):
-        return self.time
+        return f"{self.time} {self.state}"
 
 class MistState(models.Model):
-    time = models.DateTimeField(primary_key=True)
+    id = models.AutoField(primary_key=True)
+    time = models.DateTimeField(auto_now_add=True)
     state = models.BooleanField(default=False)
     def __str__(self):
-        return self.time
+        return f"{self.time} {self.state}"
 
 class WaterPumpState(models.Model):
-    time = models.DateTimeField(primary_key=True)
+    id = models.AutoField(primary_key=True)
+    time = models.DateTimeField(auto_now_add=True)
     state = models.BooleanField(default=False)
     def __str__(self):
-        return self.time
+        return f"{self.time} {self.state}"
 
 class HeaterState(models.Model):
-    time = models.DateTimeField(primary_key=True)
+    id = models.AutoField(primary_key=True)
+    time = models.DateTimeField(auto_now_add=True)
     state = models.BooleanField(default=False)
     def __str__(self):
-        return self.time
+        return f"{self.time} {self.state}"
