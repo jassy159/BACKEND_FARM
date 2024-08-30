@@ -11,7 +11,7 @@ class SensorData(models.Model):
     phLevel = models.FloatField(blank=True)
 
     def __str__(self):
-        return self.time
+        return self.time.strftime("%Y-%m-%d %H:%M:%S")
     
 
 class FanState(models.Model):

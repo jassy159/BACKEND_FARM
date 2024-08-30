@@ -1,0 +1,83 @@
+a{ color: inherit;
+text-decoration:inherit;
+} 
+body{
+    margin:0;
+    padding: 0 0 100px 0;
+}
+header{
+    width:100%;
+    overflow:hidden;
+    display:flex;
+    position:relative
+}
+header div:nth-child(1){
+    font-family:sans-serif;
+    width:20%;
+    position:absolute;
+    padding:0 0 0 20px;
+}
+header div:nth-child(2){
+    font-family:sans-serif;
+    width:100%;
+    text-align:center;
+}
+nav{
+    width:100%;
+    background:blue;
+    height:50px;
+    display:flex;
+    justify-content:space-around;    
+}
+.nav_items{
+    width:auto ;
+    font-size:1.5em;
+    color:white;
+    font-family:sans-serif;
+    display:flex;
+    
+    align-items:center
+}
+
+.onTimeValues{
+    width:100%;
+    text-align:center
+}
+.onTimeValues h1{
+    font-family:sans-serif;
+    text-align:center;
+}
+.SensorValues h1{
+    text-align:left;
+    margin:30px
+}
+.SensorValues .container{
+    width:80%;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns : auto auto auto;
+    gap:20px;
+}
+.sensorValueDisplay{
+    padding:30px;
+    border-radius:10px;
+    box-shadow:#0000008a 6px 6px 11px 3px;
+}
+.sensorValueDisplay h1{margin:0;
+    text-align:center;
+}
+.sensorValueDisplay p{
+    margin:10px 0 0;
+    font-family:sans-serif;
+    text-align:center;
+}
+
+
+
+
+
+.nav_items p:hover{
+    transition-duration: 0.5s;
+    filter:drop-shadow(3px 3px 3px  white);
+}
+

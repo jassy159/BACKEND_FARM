@@ -14,6 +14,7 @@ router.register(r'heaterstate',views.HeaterStateView)
 
 
 urlpatterns = [
-
-    path('',include(router.urls))
+    path('',views.template),
+    path('ch',views.chart),
+    path('data/',include(router.urls))
 ]

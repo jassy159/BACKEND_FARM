@@ -11,7 +11,7 @@ class SensorDataView(viewsets.ModelViewSet):
         print("----------------------------------")
         # Example logic to update actuators
         # logic for temperture
-        if sensor_data.temperature > 30:
+        if sensor_data.temperature > 50:
             models.FanState.objects.update_or_create(
                 defaults={'state':True}
             )
@@ -51,47 +51,17 @@ class SensorDataView(viewsets.ModelViewSet):
                 defaults={'state': False}
             )
 
-        if sensor_data.soilMoisture > 30:
-            models.WaterPumpState.objects.update_or_create(
-                defaults={'state':True}
-            )
+        if sensor_data.soilMoisture > 50:
+           
             models.WaterState.objects.update_or_create(
-                defaults={'state':True}
+                defaults={'state':False}
             )       
         else:
-            models.WaterPumpState.objects.update_or_create(
-                defaults={'state':False}
-            )
+       
             models.WaterState.objects.update_or_create(
-                defaults={'state':False}
-            )
-
-        if sensor_data.temperature > 30:
-            models.FanState.objects.update_or_create(
                 defaults={'state':True}
             )
-        else:
-            models.FanState.objects.update_or_create(
-                defaults={'state': False}
-            )
 
-        if sensor_data.temperature > 30:
-            models.FanState.objects.update_or_create(
-                defaults={'state':True}
-            )
-        else:
-            models.FanState.objects.update_or_create(
-                defaults={'state': False}
-            )
-
-        if sensor_data.temperature > 30:
-            models.FanState.objects.update_or_create(
-                defaults={'state':True}
-            )
-        else:
-            models.FanState.objects.update_or_create(
-                defaults={'state': False}
-            )
             
         # Add more logic for other actuators based on sensor data
 
@@ -139,3 +109,36 @@ class WaterPumpView(viewsets.ModelViewSet):
 class HeaterStateView(viewsets.ModelViewSet):
     queryset = models.HeaterState.objects.all()
     serializer_class = Serializers.HeaterStateSerializer
+
+def template(request):
+    data ={
+        'sensorData' : (models.SensorData.objects.latest('time')), 
+        'waterState' : models.WaterState.objects.latest('time'),
+        'lightState' : models.LightState.objects.latest('time'),
+        'shadeState' : models.ShadeState.objects.latest('time'),
+        'fanstate' : models.FanState.objects.latest('time'),
+        'mistState' : models.MistState.objects.latest('time'),
+        
+        'heaterState' : models.HeaterState.objects.latest('time'),
+        
+        }
+    return render(request,'index.html',data)
+
+def chart(request):    
+    sensor_data = models.SensorData.objects.all().order_by('time')
+    time_values = [data.time.strftime('%Y-%m-%d %H:%M:%S') for data in sensor_data]
+    temperature_values = [data.temperature for data in sensor_data]
+    humidity_values = [data.humidity for data in sensor_data]
+    soil_moisture_values = [data.soilMoisture for data in sensor_data]
+    light_level_values = [data.lightLevel for data in sensor_data]
+    ph_level_values = [data.phLevel for data in sensor_data]
+
+    context = {
+        'time_values': time_values,
+        'temperature_values': temperature_values,
+        'humidity_values' : humidity_values,
+        'soil_moisture_values':soil_moisture_values,
+        'light_level_values':light_level_values,
+        'ph_level_values':ph_level_values
+    }
+    return render(request, 'Graph.html', context)

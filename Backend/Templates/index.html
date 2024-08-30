@@ -1,0 +1,97 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+<body>
+
+    <header>
+        <div class="JAN">
+            <h1>JAN</h1>
+        </div>
+        <div class="portfolio">
+            <h1>PORTFOLIO</h1>
+        </div>
+        <div class="hide">
+            <img src="" alt="">
+        </div>
+    </header>
+    <nav>
+        
+        <div class="nav_items"><a href="/">Current Values</a></p></div>
+        <div class="nav_items"><a href="/ch">Chart</a></p></div>
+        <div class="nav_items"></div>
+        <div class="nav_items"></div>
+        <div class="nav_items"></div>
+    </nav>
+    <section class="onTimeValues">
+        <h1>Current Values</h1>
+        <!-- Sensor values -->
+        <div class="SensorValues">
+            <h1>Sensor Values</h1>
+            <div class="container">
+                <div class="sensorValueDisplay">
+                    <h1>Temperature</h1>
+                    <p>{{sensorData.temperature}}</p>
+                </div>
+                <div class="sensorValueDisplay">
+                    <h1>Humidity</h1>
+                    <p>{{sensorData.humidity}}</p>
+                </div>
+                <div class="sensorValueDisplay">
+                    <h1>Soil Moisture</h1>
+                    <p>{{sensorData.soilMoisture}}</p>
+                </div>
+                <div class="sensorValueDisplay">
+                    <h1>Light Level</h1>
+                    <p>{{sensorData.lightLevel}}</p>
+                </div>
+       
+                <div class="sensorValueDisplay">
+                    <h1>Time</h1>
+                    <p>{{sensorData.time}}</p>
+                </div>
+            </div>
+        </div>
+        <!-- //acutatore State -->
+        <div class="SensorValues">
+            <h1>Acutaor State</h1>
+            <div class="container">
+                <div class="sensorValueDisplay">
+                    <h1>Water Acutator</h1>
+                    <p>{{waterState.state}}</p>
+                </div>
+                <div class="sensorValueDisplay">
+                    <h1>Light</h1>
+                    <p>{{lightState.state}}</p>
+                </div>
+                <div class="sensorValueDisplay">
+                    <h1>shadeState</h1>
+                    <p>{{shadeState.state}}</p>
+                </div>
+                <div class="sensorValueDisplay">
+                    <h1>FAN</h1>
+                    <p>{{fanstate.state}}</p>
+                </div>
+                <div class="sensorValueDisplay">
+                    <h1>Mist Produce</h1>
+                    <p>{{mistState.state}}</p>
+                </div>
+              
+                <div class="sensorValueDisplay">
+                    <h1>Heater </h1>
+                    <p>{{heaterState.state}}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+</body>
+</html>
